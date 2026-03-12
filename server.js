@@ -1,13 +1,13 @@
 import express from "express";
 import cors from 'cors'
 
-import news from "./routes/news.js";
+import articles from "./routes/article.route.js";
 import connectDB from "./config/dbConnection.js";
 const app = express()
 const PORT = process.env.PORT;
 
 //Connect DB
-connectDB()
+// connectDB()
 
 // Middleware
 app.use(cors())
@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
     res.send('NEWS-AI')
     res.end()
 })
-app.use('/api/news', news)
+app.use('/api/articles', articles)
 
 app.listen(PORT, () => {
     console.log(`Server running on PORT: ${PORT}`)

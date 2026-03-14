@@ -6,5 +6,4 @@
 methods requried
     fetch articles
     
-user ->
-    top-headline / getFromDB else getFromAPI
+

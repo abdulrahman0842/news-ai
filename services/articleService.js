@@ -29,3 +29,17 @@ export const getTopHeadlines = async ({ country = null, category = null, query =
         return error
     }
 }
+
+
+export const getSources = async () => {
+    try {
+        const response = await axios.get(`${baseUrl}top-headlines/sources`, {
+            headers: {
+                Authorization: `bearer ${apiKey}`
+            },
+        });
+        return response.data.sources
+    } catch (error) {
+        console.log("Error getSources()", error, "Erro close")
+    }
+}

@@ -5,10 +5,6 @@ const articleSchema = mongoose.Schema.create({
         id: String,
         name: String
     },
-    article_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
-    },
     author: String,
     title: {
         type: String,
@@ -20,8 +16,8 @@ const articleSchema = mongoose.Schema.create({
         required: true,
         unique: true
     },
-    urlToImage: Date,
-    publishedAt: String,
+    urlToImage: String,
+    publishedAt: Date   ,
     content: String,
     category: String,
     country: String

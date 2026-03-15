@@ -8,7 +8,6 @@ const api = axios.create({
 export const getTopHeadlines = async (params = {}) => {
     const response = await api.get('/top-headlines', { params })
     const payload = response.data
-console.log(response.data,'this is data ')
     if (Array.isArray(payload)) {
         return payload
     }

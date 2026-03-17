@@ -65,7 +65,7 @@ export const subscribeToNewsApi = () => {
 
     const updateNewsAndStore = async () => {
         await fetchByCategories()
-        // await fetchByCountries()
+        await fetchByCountries()
     }
 
     updateNewsAndStore()

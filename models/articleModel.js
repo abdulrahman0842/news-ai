@@ -17,10 +17,11 @@ const articleSchema = mongoose.Schema.create({
         unique: true
     },
     urlToImage: String,
-    publishedAt: Date   ,
+    publishedAt: Date,
     content: String,
     category: String,
-    country: String
+    country: String,
+    fetchedAt: Date
 }, {
     timeStamps: true
 })

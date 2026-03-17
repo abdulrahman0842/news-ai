@@ -14,7 +14,9 @@ export const getTopHeadlines = asyncHandler(async (req, res, next) => {
         dbQuery.q = q
     }
     if (sources) {
-        dbQuery.source = sources
+        dbQuery = {
+            source: { id: sources }
+        }
     }
 
     console.log(dbQuery)

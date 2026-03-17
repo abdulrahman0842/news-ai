@@ -1,6 +1,8 @@
 /top-headlines  q country , category , q 
 /sources 
 
+category 
+country 
 
 
 methods requried

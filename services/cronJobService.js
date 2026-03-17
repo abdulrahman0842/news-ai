@@ -1,8 +1,8 @@
 import { getTopHeadlines } from "./articleService.js"
 import ArticleModel from '../models/articleModel.js';
 
-const categories = ['Business', 'Technology', 'Entertainment', 'Sports']
-const countries = ['us', 'in', 'ca', 'uk']
+const categories = ['Business', 'Technology', 'Entertainment', 'Sports', 'Health']
+const countries = ['us',]
 
 const fetchByCategories = async () => {
     try {
@@ -24,16 +24,18 @@ const fetchByCategories = async () => {
                 updateOne: {
                     filter: { url: article.url },
                     update: { $set: article },
-                    uprest: true
+                    upsert: true
                 }
             })));
+            console.log('Write By Categories:', data)
         })
+        console.log('fetchByCategories() - Successfull fetched and stored')
     } catch (error) {
         console.log('Error Inserting Articles fetchByCategories()- ', error);
     }
 }
 
-const fetchByCountries = async (country) => {
+const fetchByCountries = async () => {
     try {
         countries.forEach(async (country) => {
             const response = await getTopHeadlines({ country: country })
@@ -47,22 +49,29 @@ const fetchByCountries = async (country) => {
                 updateOne: {
                     filter: { url: article.url },
                     update: { $set: article },
-                    uprest: true
+                    upsert: true
                 }
             })))
+            console.log('Write By Countries:', data)
         })
+        console.log('fetchByCountries() - Successfull fetched and stored')
     } catch (error) {
         console.log('Error Inserting Articles fetchByCountries()- ', error);
     }
 }
 
 export const subscribeToNewsApi = () => {
-    const interval = setInterval(() => {
-        fetchByCategories()
-        fetchByCountries()
-    }, 3600000)
-    
+    console.log('Subscribed to NEWS API...')
+
+    const updateNewsAndStore = async () => {
+        await fetchByCategories()
+        // await fetchByCountries()
+    }
+
+    updateNewsAndStore()
+    setInterval(updateNewsAndStore, 600000);
 }
+
 // const news = {
 //     source: {
 //         id: "1",
